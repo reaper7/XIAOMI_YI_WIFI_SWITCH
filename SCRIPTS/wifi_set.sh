@@ -22,14 +22,19 @@ shutter_led_blink()
     done
 }
 
-# variable SHUTTERBTN: 1 AP; 0 STA (based od reading gpio 13 => shutter
-# when shutter is pressed then return 0 and when released then return 1 
-GPIO=`cat /proc/ambarella/gpio`
-SHUTTERBTN=${GPIO:13:1}
+if [ $# -ne 0 ]; then
+  # if wifi_set.sh is started with any parameters then default mode is set to STA
+  WIFIMODE=0;
+else
+  # variable WIFIMODE: 1 AP; 0 STA (based od reading gpio 13 => shutter)
+  # when shutter is pressed then return 0 and when released then return 1 
+  GPIO=`cat /proc/ambarella/gpio`
+  WIFIMODE=${GPIO:13:1}
+fi
 
 if [ -f /tmp/fuse_d/MISC/wifi.conf ]; then rm -f /tmp/fuse_d/MISC/wifi.conf; fi
 
-if [ ${SHUTTERBTN} -eq 0 ]; then
+if [ ${WIFIMODE} -eq 0 ]; then
   cp -f /tmp/fuse_d/MISC/TMP.WIFI.CONF /tmp/fuse_d/MISC/wifi.conf
   sed -i 's/WIFI_MODE=ap/WIFI_MODE=sta/g' /tmp/fuse_d/MISC/wifi.conf
 
