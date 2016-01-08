@@ -23,7 +23,7 @@ shutter_led_blink()
 }
 
 if [ $# -ne 0 ]; then
-  # if wifi_set.sh is started with any parameter then default mode is set to STA
+  # if wifi_set.sh is started with any parameters then default mode is set to STA
   WIFIMODE=0;
 else
   # variable WIFIMODE: 1 AP; 0 STA (based od reading gpio 13 => shutter)
