@@ -28,7 +28,7 @@ if [ $# -ne 0 ]; then
   # if wifi_set.sh is started with any parameters then default mode is set to STA
   MODESET=0;
 else
-  # variable WIFIMODE: 1 AP; 0 STA (based od reading gpio 13 => shutter)
+  # variable MODESET: 1 AP; 0 STA (based od reading gpio 13 => shutter)
   # when shutter is pressed then return 0 and when released then return 1 
   MODESET=${GPIO:13:1}
 fi
