@@ -16,3 +16,5 @@ Please look and edit MISC/TMP.WIFI.CONF and MISC/wpa_supplicant.conf for Your co
 
 Please notice that these scripts do not switch on or off wifi but only prepare configs for them.
 You must use WiFi button for on/off wifi!
+
+[paypal.me/reaper7md](https://www.paypal.me/reaper7md)
